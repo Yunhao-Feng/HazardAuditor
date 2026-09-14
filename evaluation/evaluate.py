@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Evaluate an RLGuard checkpoint on all five held-out test groups.
+"""Evaluate a HazardAuditor checkpoint on prepared held-out trajectories.
 
 The script reads the exact prepared validation split used during SFT:
 
@@ -29,15 +29,24 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable, Sequence
 
-from guard_output import extract_guard_label
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from hazard_auditor.output import extract_guard_label
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent
 DEFAULT_CHECKPOINT = (
-    PROJECT_ROOT / "outputs" / "qwen3_guard_8b_full_sft" / "checkpoint-2704"
+    PROJECT_ROOT
+    / "artifacts"
+    / "checkpoints"
+    / "guardpo"
+    / "best_checkpoint"
+    / "actor"
+    / "huggingface"
 )
-DEFAULT_VALIDATION_DIR = PROJECT_ROOT / "data" / "guard_sft"
-DEFAULT_TOKENIZER_FALLBACK = PROJECT_ROOT / "model_cache" / "qwen3_guard_8b"
+DEFAULT_VALIDATION_DIR = PROJECT_ROOT / "artifacts" / "sft_data"
+DEFAULT_TOKENIZER_FALLBACK = DEFAULT_CHECKPOINT
 EXPECTED_SOURCES = ("AgentHazard", "ASSE", "ATBench", "RJudge", "Vera")
 WEIGHT_FILENAMES = (
     "model.safetensors",
@@ -108,7 +117,7 @@ class RuntimeContext:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Generate safe/unsafe verdicts for the five RLGuard validation "
+            "Generate safe/unsafe verdicts for the five HazardAuditor validation "
             "groups and print per-benchmark binary metrics."
         )
     )

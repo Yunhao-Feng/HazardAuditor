@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hazard-auditor"
+version = "0.1.0"
+description = "Execution-grounded safety auditing for computer-use agent trajectories"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+dependencies = [
+  "accelerate>=1.0",
+  "torch>=2.4",
+  "transformers>=4.57.1",
+]
+
+[project.urls]
+Homepage = "https://yunhao-feng.github.io/HazardAuditor/"
+Repository = "https://github.com/Yunhao-Feng/HazardAuditor"
+Model = "https://huggingface.co/Yunhao-Feng/HazardAuditor"
+
+[project.scripts]
+hazard-auditor = "hazard_auditor.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["hazard_auditor*"]

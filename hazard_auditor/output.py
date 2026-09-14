@@ -1,4 +1,4 @@
-"""Canonical output formatting and label extraction for RLGuard."""
+"""Canonical HazardAuditor output formatting and parsing."""
 
 from __future__ import annotations
 
@@ -9,21 +9,18 @@ from typing import Literal
 GuardLabel = Literal["safe", "unsafe"]
 
 _TAGGED_LABEL_RE = re.compile(
-    r"<label>\s*(safe|unsafe|0|1)\s*</label>",
-    flags=re.IGNORECASE,
+    r"<label>\s*(safe|unsafe|0|1)\s*</label>", flags=re.IGNORECASE
+)
+_ANALYSIS_RE = re.compile(
+    r"<analysis>\s*(.*?)\s*</analysis>", flags=re.IGNORECASE | re.DOTALL
 )
 _QWEN_GUARD_RE = re.compile(
-    r"\bSafety\s*:\s*(Safe|Unsafe|Controversial)\b",
-    flags=re.IGNORECASE,
+    r"\bSafety\s*:\s*(Safe|Unsafe|Controversial)\b", flags=re.IGNORECASE
 )
 _FINAL_BARE_LABEL_RE = re.compile(
-    r"(?:^|\n)\s*(unsafe|safe)\s*$",
-    flags=re.IGNORECASE,
+    r"(?:^|\n)\s*(unsafe|safe)\s*$", flags=re.IGNORECASE
 )
-_STRUCTURAL_TAG_RE = re.compile(
-    r"</?(?:analysis|label)>",
-    flags=re.IGNORECASE,
-)
+_STRUCTURAL_TAG_RE = re.compile(r"</?(?:analysis|label)>", flags=re.IGNORECASE)
 
 
 def normalize_label(value: str) -> GuardLabel:
@@ -35,14 +32,9 @@ def normalize_label(value: str) -> GuardLabel:
     raise ValueError(f"unsupported guard label: {value!r}")
 
 
-def extract_guard_label(text: str, *, allow_fallback: bool = True) -> GuardLabel | None:
-    """Extract the final verdict, preferring the explicit RLGuard label tag.
-
-    Fallbacks keep evaluation robust to a partially fine-tuned checkpoint that
-    emits Qwen3Guard's native ``Safety: ...`` schema or a final bare label.
-    Malformed/unparseable output must remain incorrect rather than defaulting
-    to safe.
-    """
+def extract_guard_label(
+    text: str, *, allow_fallback: bool = True
+) -> GuardLabel | None:
     if not isinstance(text, str):
         return None
     tagged = _TAGGED_LABEL_RE.findall(text)
@@ -50,7 +42,6 @@ def extract_guard_label(text: str, *, allow_fallback: bool = True) -> GuardLabel
         return normalize_label(tagged[-1])
     if not allow_fallback:
         return None
-
     native = _QWEN_GUARD_RE.findall(text)
     if native:
         return normalize_label(native[-1])
@@ -60,11 +51,19 @@ def extract_guard_label(text: str, *, allow_fallback: bool = True) -> GuardLabel
     return None
 
 
+def extract_guard_analysis(text: str) -> str | None:
+    if not isinstance(text, str):
+        return None
+    matches = _ANALYSIS_RE.findall(text)
+    if not matches:
+        return None
+    analysis = matches[-1].strip()
+    return analysis or None
+
+
 def neutralize_target_tags(text: str) -> str:
-    """Keep source rationales from injecting our assistant-output delimiters."""
     return _STRUCTURAL_TAG_RE.sub(
-        lambda match: "\\u003c" + match.group(0)[1:],
-        text,
+        lambda match: "\\u003c" + match.group(0)[1:], text
     )
 
 

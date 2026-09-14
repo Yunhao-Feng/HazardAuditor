@@ -1,0 +1,57 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+config/
+secrets/
+*.pem
+*.key
+
+# Research data and generated artifacts
+data/
+test_data/
+outputs/
+results/
+artifacts/
+checkpoints/
+model_cache/
+training_process/
+logs/
+wandb/
+paper/
+write/
+referenced_papers/
+third_party/
+
+# Model and training files
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.arrow
+*.parquet
+*.jsonl
+!examples/*.jsonl
+
+# Python and tooling
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+build/
+dist/
+.venv/
+venv/
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+* copy.py
+
+# Local Sites runtime
+.sites-runtime/

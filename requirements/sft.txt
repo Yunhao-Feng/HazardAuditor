@@ -1,0 +1,6 @@
+# Install LLaMA-Factory at the commit documented in training/sft/README.md.
+deepspeed>=0.15
+numpy>=1.26
+PyYAML>=6.0
+torch>=2.4
+transformers>=4.57.1

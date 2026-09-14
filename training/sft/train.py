@@ -30,14 +30,17 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 import numpy as np
 import yaml
 
-from guard_output import extract_guard_label
+from hazard_auditor.output import extract_guard_label
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent
-DEFAULT_CONFIG = PROJECT_ROOT / "configs" / "qwen3_guard_full_sft.yaml"
+DEFAULT_CONFIG = Path(__file__).resolve().parent / "configs" / "qwen3_guard_full_sft.yaml"
 CHECKPOINT_RE = re.compile(r"^checkpoint-(\d+)$")
 ROOT_WEIGHT_PATTERNS = (
     "model.safetensors",

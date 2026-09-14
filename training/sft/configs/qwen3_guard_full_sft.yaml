@@ -1,0 +1,74 @@
+### Model
+model_name_or_path: Qwen/Qwen3Guard-Gen-8B
+trust_remote_code: true
+flash_attn: fa2
+
+### Full-parameter SFT
+stage: sft
+do_train: true
+do_eval: true
+finetuning_type: full
+deepspeed: training/sft/configs/ds_z2_guard.json
+
+### Trajectory datasets
+dataset: hazard_auditor_train
+eval_dataset: hazard_auditor_validation
+dataset_dir: artifacts/sft_data
+val_size: 0.0
+template: qwen3_nothink
+enable_thinking: false
+# Keep at most the first 16,000 tokens of an overlong trajectory. Validation
+# may then generate up to 384 tokens (16,384 total).
+cutoff_len: 16000
+train_on_prompt: false
+packing: false
+overwrite_cache: true
+preprocessing_num_workers: 16
+dataloader_num_workers: 4
+
+### Output and checkpoint lifecycle
+output_dir: artifacts/checkpoints/sft
+overwrite_output_dir: false
+save_strategy: epoch
+eval_strategy: epoch
+# Run a full generated-label baseline before the first optimizer update.
+eval_on_start: true
+save_total_limit: 2
+save_only_model: false
+load_best_model_at_end: true
+metric_for_best_model: label_accuracy
+greater_is_better: true
+logging_steps: 5
+logging_first_step: true
+plot_loss: true
+report_to: none
+
+### Optimization: 8 x A100
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 2
+learning_rate: 5.0e-6
+num_train_epochs: 10
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+weight_decay: 0.1
+max_grad_norm: 1.0
+optim: adamw_torch_fused
+bf16: true
+tf32: true
+disable_gradient_checkpointing: false
+ddp_timeout: 180000000
+seed: 42
+data_seed: 42
+
+### Deployment-faithful validation
+predict_with_generate: true
+do_sample: false
+max_new_tokens: 384
+num_beams: 1
+batch_eval_metrics: true
+eval_accumulation_steps: 1
+
+### HazardAuditor extensions consumed by training/sft/train.py
+guard_label_loss_weight: 4.0
+guard_label_tail_tokens: 12

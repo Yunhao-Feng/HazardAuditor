@@ -1,0 +1,5 @@
+# VERL and its serving stack must match training/guardpo/README.md.
+numpy>=1.26
+packaging>=24.0
+torch==2.8.0
+transformers==4.57.1
