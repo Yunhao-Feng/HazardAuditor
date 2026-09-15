@@ -19,6 +19,8 @@ dependencies = [
 Homepage = "https://yunhao-feng.github.io/HazardAuditor/"
 Repository = "https://github.com/Yunhao-Feng/HazardAuditor"
 Model = "https://huggingface.co/Yunhao-Feng/HazardAuditor"
+Paper = "https://arxiv.org/abs/2609.15134"
+"Hugging Face Paper" = "https://huggingface.co/papers/2609.15134"
 
 [project.scripts]
 hazard-auditor = "hazard_auditor.cli:main"

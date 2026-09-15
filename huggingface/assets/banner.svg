@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="400" viewBox="0 0 1400 400" role="img" aria-labelledby="title description">
+  <title id="title">HazardAuditor</title>
+  <desc id="description">Execution-grounded safety auditing for computer-use agents.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#06101f"/>
+      <stop offset="0.52" stop-color="#081b33"/>
+      <stop offset="1" stop-color="#0a2943"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#63e6ff"/>
+      <stop offset="1" stop-color="#7bf7ce"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#56dfff" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#56dfff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#7bdff2" stroke-opacity=".085" stroke-width="1"/>
+    </pattern>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="400" rx="28" fill="url(#background)"/>
+  <rect width="1400" height="400" rx="28" fill="url(#grid)"/>
+  <ellipse cx="1130" cy="190" rx="350" ry="310" fill="url(#glow)"/>
+  <path d="M0 338C251 274 400 411 656 338S1080 279 1400 324V400H0Z" fill="#39d9ff" opacity=".035"/>
+
+  <g transform="translate(86 72)">
+    <rect width="8" height="212" rx="4" fill="url(#accent)"/>
+    <text x="42" y="44" fill="#8aa5c5" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="4">EXECUTION-GROUNDED AGENT SAFETY</text>
+    <text x="42" y="126" fill="#f2f8ff" font-family="Inter,Arial,sans-serif" font-size="72" font-weight="800" letter-spacing="-2">HazardAuditor</text>
+    <text x="44" y="177" fill="#b7cbe2" font-family="Inter,Arial,sans-serif" font-size="25">Audit what an agent actually did — not only what it said.</text>
+    <g transform="translate(44 205)">
+      <rect width="292" height="42" rx="21" fill="#63e6ff" opacity=".11" stroke="#63e6ff" stroke-opacity=".42"/>
+      <text x="146" y="27" text-anchor="middle" fill="#8dedff" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="2.4">AUDIT · EXPLAIN · ALIGN</text>
+    </g>
+  </g>
+
+  <g transform="translate(1015 74)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="132" cy="126" r="104" stroke="#65e6ff" stroke-opacity=".2" stroke-width="2"/>
+    <circle cx="132" cy="126" r="75" stroke="#65e6ff" stroke-opacity=".25"/>
+    <path d="M132 48L193 74V123C193 169 168 197 132 214C96 197 71 169 71 123V74Z" fill="#0b3450" stroke="url(#accent)" stroke-width="3" filter="url(#softGlow)"/>
+    <path d="M104 128L124 148L164 101" stroke="#7bf7ce" stroke-width="8"/>
+
+    <path d="M-84 48L38 88M-72 211L46 168M236 64L318 24M230 183L326 222" stroke="#77e6ff" stroke-opacity=".48" stroke-width="2"/>
+    <circle cx="-84" cy="48" r="7" fill="#63e6ff" stroke="none"/>
+    <circle cx="-72" cy="211" r="7" fill="#7bf7ce" stroke="none"/>
+    <circle cx="318" cy="24" r="7" fill="#7bf7ce" stroke="none"/>
+    <circle cx="326" cy="222" r="7" fill="#63e6ff" stroke="none"/>
+    <circle cx="38" cy="88" r="4" fill="#63e6ff" stroke="none"/>
+    <circle cx="46" cy="168" r="4" fill="#7bf7ce" stroke="none"/>
+    <circle cx="236" cy="64" r="4" fill="#7bf7ce" stroke="none"/>
+    <circle cx="230" cy="183" r="4" fill="#63e6ff" stroke="none"/>
+  </g>
+
+  <path d="M28 28H1372V372H28Z" fill="none" stroke="#9aeaff" stroke-opacity=".14"/>
+</svg>

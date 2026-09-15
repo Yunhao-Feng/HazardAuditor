@@ -1,0 +1,56 @@
+cff-version: 1.2.0
+message: "If you use HazardAuditor, please cite the paper below."
+title: HazardAuditor
+type: software
+version: 0.1.0
+date-released: 2026-09-14
+license: Apache-2.0
+repository-code: "https://github.com/Yunhao-Feng/HazardAuditor"
+url: "https://yunhao-feng.github.io/HazardAuditor/"
+authors:
+  - given-names: Yunhao
+    family-names: Feng
+  - given-names: Ruixiao
+    family-names: Lin
+  - given-names: Ming
+    family-names: Wen
+  - given-names: Yanming
+    family-names: Guo
+  - given-names: Xingjun
+    family-names: Ma
+  - given-names: Yutao
+    family-names: Wu
+  - given-names: Xinhao
+    family-names: Deng
+  - given-names: Shouling
+    family-names: Ji
+identifiers:
+  - type: url
+    value: "https://huggingface.co/Yunhao-Feng/HazardAuditor"
+    description: Model weights
+  - type: url
+    value: "https://huggingface.co/papers/2609.15134"
+    description: Hugging Face Papers page
+preferred-citation:
+  type: article
+  title: "HazardAuditor: From Executable Threats to Safer Computer-Use Agents"
+  authors:
+    - given-names: Yunhao
+      family-names: Feng
+    - given-names: Ruixiao
+      family-names: Lin
+    - given-names: Ming
+      family-names: Wen
+    - given-names: Yanming
+      family-names: Guo
+    - given-names: Xingjun
+      family-names: Ma
+    - given-names: Yutao
+      family-names: Wu
+    - given-names: Xinhao
+      family-names: Deng
+    - given-names: Shouling
+      family-names: Ji
+  year: 2026
+  doi: "10.48550/arXiv.2609.15134"
+  url: "https://arxiv.org/abs/2609.15134"

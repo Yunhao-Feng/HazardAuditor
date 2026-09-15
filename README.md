@@ -7,10 +7,12 @@
 An execution-grounded generative guard that audits what an agent **actually
 did** across user requests, reasoning, tool calls, and environment results.
 
-[![Project Page](https://img.shields.io/badge/Project-Website-58d9ff?style=flat-square)](https://yunhao-feng.github.io/HazardAuditor/)
-[![Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-Uploading-8ea7ff?style=flat-square)](https://huggingface.co/Yunhao-Feng/HazardAuditor)
-[![Paper](https://img.shields.io/badge/arXiv-Coming%20Soon-87f5d4?style=flat-square)](https://arxiv.org/abs/XXXX.XXXXX)
-[![License](https://img.shields.io/badge/License-Apache--2.0-d5e4ff?style=flat-square)](LICENSE)
+[![Project Page](https://img.shields.io/badge/Project-Website-004b91?style=flat-square)](https://yunhao-feng.github.io/HazardAuditor/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-223344?style=flat-square&logo=github)](https://github.com/Yunhao-Feng/HazardAuditor)
+[![Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-Weights-527f9f?style=flat-square)](https://huggingface.co/Yunhao-Feng/HazardAuditor)
+[![HF Paper](https://img.shields.io/badge/%F0%9F%A4%97%20HF-Paper-e7ad56?style=flat-square)](https://huggingface.co/papers/2609.15134)
+[![Paper](https://img.shields.io/badge/arXiv-2609.15134-e24d42?style=flat-square)](https://arxiv.org/abs/2609.15134)
+[![License](https://img.shields.io/badge/License-Apache--2.0-223344?style=flat-square)](LICENSE)
 
 [English](README.md) · [简体中文](README_zh.md)
 
@@ -70,8 +72,8 @@ safe and unsafe trajectories across four heterogeneous agent frameworks.
 
 ## Quick start
 
-The Hugging Face checkpoint is currently being uploaded. Once all model files
-are present, install the package and run the included synthetic example:
+The checkpoint is available on Hugging Face. Install the package and run the
+included synthetic example:
 
 ```bash
 git clone https://github.com/Yunhao-Feng/HazardAuditor.git
@@ -179,15 +181,20 @@ and for complying with applicable privacy, security, and dataset licenses.
 
 ## Paper and citation
 
-The arXiv manuscript is coming soon. Replace the placeholder below once the
-public identifier is available.
+Read the paper on [arXiv](https://arxiv.org/abs/2609.15134), visit its
+[Hugging Face Papers page](https://huggingface.co/papers/2609.15134), or use
+the [persistent DOI](https://doi.org/10.48550/arXiv.2609.15134).
 
 ```bibtex
-@article{hazardauditor2026,
-  title   = {HazardAuditor: From Executable Threats to Safer Computer-Use Agents},
-  journal = {arXiv preprint},
-  year    = {2026},
-  url     = {https://arxiv.org/abs/XXXX.XXXXX}
+@misc{feng2026hazardauditor,
+  title         = {HazardAuditor: From Executable Threats to Safer Computer-Use Agents},
+  author        = {Yunhao Feng and Ruixiao Lin and Ming Wen and Yanming Guo and Xingjun Ma and Yutao Wu and Xinhao Deng and Shouling Ji},
+  year          = {2026},
+  eprint        = {2609.15134},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  doi           = {10.48550/arXiv.2609.15134},
+  url           = {https://arxiv.org/abs/2609.15134}
 }
 ```
 
