@@ -1,7 +1,7 @@
 <div align="center">
 
 # HazardAuditor
-
+### <font color=red> Must use transformers 5.2.0 and above to perform the reasoning for this model. </font>
 ### From Executable Threats to Safer Computer-Use Agents
 
 An execution-grounded generative guard that audits what an agent **actually
